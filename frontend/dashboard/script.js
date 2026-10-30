@@ -58,7 +58,7 @@ btn.addEventListener("click",async()=>{
     `
 
     ///sending the req body
-    const response=await fetch("https://kathabook-5.onrender.com",{
+    const response=await fetch("https://kathabook-5.onrender.com/kathabook",{
         method:"POST",
          headers: {
         "Content-Type": "application/json"
