@@ -26,14 +26,14 @@ mongoose.connect("mongodb://rakeshsanchana0411_db_user:d4oIOnopxO2fxjZS@ac-uod9l
 
 
 ////server code
-app.listen(3005,()=>{
-    console.log("server is running")
-})
-
-
-/////used to see the dashboard in render
 app.get("/", (req, res) => {
     res.send("KathaBook backend is running successfully!")
+})
+
+const PORT = process.env.PORT || 3005;
+
+app.listen(PORT, () => {
+    console.log("server is running")
 })
 
 ///database schema
