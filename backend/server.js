@@ -30,6 +30,12 @@ app.listen(3005,()=>{
     console.log("server is running")
 })
 
+
+/////used to see the dashboard in render
+app.get("/", (req, res) => {
+    res.send("KathaBook backend is running successfully!")
+})
+
 ///database schema
 
 const schema=new mongoose.Schema({
