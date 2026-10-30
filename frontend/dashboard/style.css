@@ -1,0 +1,446 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.delete {
+    background-color: #FFCCCC;
+    width:40px;
+    height:40px;
+    text-align: center;
+    color:black
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f6f8fc;
+    color: #172744;
+    padding: 35px;
+}
+
+.dashboard {
+    width: 100%;
+    max-width: 1600px;
+    margin: auto;
+}
+
+/* Summary cards */
+
+.summary {
+    display: grid;
+    grid-template-columns: 1fr 260px 1fr;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    min-height: 180px;
+    padding: 30px;
+    border-radius: 14px;
+    border: 1px solid;
+}
+
+.received {
+    background: #effbf6;
+    border-color: #d0f4e5;
+}
+
+.spent {
+    background: #fff4f5;
+    border-color: #ffdee3;
+}
+
+.icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 38px;
+    flex-shrink: 0;
+}
+
+.received .icon {
+    background: #22b878;
+}
+
+.spent .icon {
+    background: #ed4b4b;
+}
+
+.summary-card h3 {
+    font-size: 20px;
+    margin-bottom: 14px;
+}
+
+.summary-card h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.received h1 {
+    color: #18a86c;
+}
+
+.spent h1 {
+    color: #e54848;
+}
+
+.summary-card p {
+    color: #7c879c;
+    font-size: 14px;
+}
+
+/* Total balance circle */
+
+/* .balance-circle {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #24b878 0deg 210deg,
+        #e8edf5 210deg 300deg,
+        #ed4b4b 300deg 360deg
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+} */
+
+.circle-inner {
+    width: 225px;
+    height: 215px;
+    border-radius: 10%;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-inner p {
+    color: #71809a;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.circle-inner h1 {
+    font-size: 32px;
+}
+
+/* Main layout */
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1.7fr 0.95fr;
+    gap: 25px;
+    align-items: stretch;
+}
+
+.recipients-card,
+.transaction-card {
+    background: #ffffff;
+    border: 1px solid #e6ebf5;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 3px 10px rgba(30, 50, 90, 0.03);
+}
+
+/* Recipient header */
+
+.recipients-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+.search {
+    width: 40%;
+    min-width: 180px;
+    padding: 13px;
+    border: 1px solid #dfe5f0;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: #6554f0;
+}
+
+/* Recipient rows */
+
+.recipient-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.recipient {
+    display: grid;
+    grid-template-columns: 55px minmax(100px, 1fr) auto auto 15px;
+    align-items: center;
+    gap: 15px;
+    min-height: 68px;
+    padding: 10px 12px;
+    border: 1px solid #e7ecf6;
+    border-radius: 12px;
+    transition: background 0.2s;
+}
+
+.recipient:hover {
+    background: #f8f8ff;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.purple {
+    background: #e9e4ff;
+    color: #5945e9;
+}
+
+.blue {
+    background: #dceaff;
+    color: #1870df;
+}
+
+.pink {
+    background: #ffe2ea;
+    color: #e63c60;
+}
+
+.orange {
+    background: #ffead4;
+    color: #e98112;
+}
+
+.cyan {
+    background: #d9f5fc;
+    color: #1598b7;
+}
+
+.recipient-name {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.amount {
+    font-size: 17px;
+    white-space: nowrap;
+}
+
+.green {
+    color: #13a566;
+}
+
+.red {
+    color: #f04444;
+}
+
+.status {
+    padding: 9px 13px;
+    border-radius: 9px;
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.received-label {
+    background: #e2f8ee;
+    color: #12a365;
+}
+
+.spent-label {
+    background: #ffe8ec;
+    color: #ef414b;
+}
+
+.arrow {
+    color: #7c879c;
+    font-size: 28px;
+}
+
+/* Transaction form */
+
+.transaction-card h2 {
+    margin-bottom: 25px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-top: 8px;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 18px;
+    border: 1px solid #dfe5f0;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #263651;
+    background: #ffffff;
+    outline: none;
+}
+
+form input::placeholder {
+    color: #8a96ac;
+}
+
+form select {
+    cursor: pointer;
+}
+
+#trans {
+    margin-top: 5px;
+    padding: 16px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #6250f2, #6554ed);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Responsive design */
+
+@media (max-width: 1100px) {
+    body {
+        padding: 20px;
+    }
+
+    .summary {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .balance-circle {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        width: 180px;
+        height: 180px;
+    }
+
+    .circle-inner {
+        width: 158px;
+        height: 158px;
+    }
+
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    body {
+        padding: 12px;
+    }
+
+    .summary {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .balance-circle {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .summary-card {
+        padding: 20px;
+        min-height: 140px;
+        gap: 15px;
+    }
+
+    .summary-card h1 {
+        font-size: 28px;
+    }
+
+    .recipients-card,
+    .transaction-card {
+        padding: 15px;
+    }
+
+    .recipients-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search {
+        width: 100%;
+    }
+
+    .recipient {
+        grid-template-columns: 40px minmax(65px, 1fr) auto;
+        gap: 8px;
+        padding: 10px 6px;
+    }
+
+    .avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 17px;
+    }
+
+    .recipient-name {
+        font-size: 13px;
+    }
+
+    .amount {
+        font-size: 13px;
+    }
+
+    .status {
+        grid-column: 2;
+        font-size: 12px;
+        padding: 6px;
+        justify-self: start;
+    }
+
+    .arrow {
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+}

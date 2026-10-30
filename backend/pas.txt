@@ -1,0 +1,6 @@
+rakeshsanchana0411_db_user
+d4oIOnopxO2fxjZS
+
+
+
+mongodb://rakeshsanchana0411_db_user:d4oIOnopxO2fxjZS@ac-uod9lfp-shard-00-00.iwm2hrl.mongodb.net:27017,ac-uod9lfp-shard-00-01.iwm2hrl.mongodb.net:27017,ac-uod9lfp-shard-00-02.iwm2hrl.mongodb.net:27017/?ssl=true&replicaSet=atlas-5vkt8r-shard-0&authSource=admin

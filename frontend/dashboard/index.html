@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katha Book Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard">
+        <!-- Summary Section -->
+        <section class="summary">
+            <div class="summary-card received">
+                <div class="icon">↑</div>
+                <div >
+                    <h3>Lend</h3>
+                    <h1 id="Lend">₹0</h1>
+                </div>
+            </div>
+
+            <div class="balance-circle">
+                <div class="circle-inner">
+                    <p>Total Balance</p>
+                    <h1 id="totalbal">₹0</h1>
+                </div>
+            </div>
+
+            <div class="summary-card spent">
+                <div class="icon">↓</div>
+                <div>
+                    <h3>Borrowed</h3>
+                    <h1 id="borrowed">₹0</h1>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Main Content -->
+        <section class="main-content">
+
+            <!-- All Recipients -->
+            <div class="recipients-card">
+
+                <div class="recipients-header">
+                    <h2>All Recipients</h2>
+<input
+    type="search"
+    id="search"
+    name="search"
+    placeholder="Search recipient..."
+    class="search"
+>
+
+                </div>
+
+                <div class="recipient-list">
+                   
+
+                </div>
+            </div>
+
+            <!-- Add Transaction -->
+            <div class="transaction-card">
+
+                <h2>Add Transaction</h2>
+
+                <form>
+
+                    <label for="amount">Amount</label>
+                    <input
+                        type="number"
+                        id="amount"
+                        placeholder="Enter amount"
+                        required
+                        autocomplete="number"
+                    >
+
+                    <label for="name">Recipient Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter recipient name"
+                        required
+                          autocomplete="text"
+                    >
+
+                    <label for="type">Transaction Type</label>
+                    <select id="type" required>
+                        <option value="" disabled selected>
+                            Select type
+                        </option>
+                        <option value="received">Borrowed</option>
+                        <option value="given">Lend</option>
+                    </select>
+
+                    <button type="button" id="trans">Add Transaction</button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </div>
+   <script src="script.js"></script>
+</body>
+</html>
