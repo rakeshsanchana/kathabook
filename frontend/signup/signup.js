@@ -8,7 +8,7 @@ btn.addEventListener("click",async()=>{
         alert("password was not matched")
     }
    else{
-    const respose=await fetch("https://kathabook-kvn3.onrender.com/signup",{
+    const respose=await fetch("https://kathabook-epyw.onrender.com/signup",{
         method:"POST",
         headers:{
             "Content-Type":"application/json"
