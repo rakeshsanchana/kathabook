@@ -14,6 +14,10 @@ btn.addEventListener("click",async()=>{
         })
 
     })
-    const data=await response.text()
-    console.log(data)
+    const data=await response.json()
+    if(data.token){
+        localStorage.setItem("token",data.token)
+        window.location.href = "../dashboard/index.html"
+        console.log("successfully stored") 
+    }
 })

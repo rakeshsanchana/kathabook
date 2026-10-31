@@ -19,5 +19,6 @@ btn.addEventListener("click",async()=>{
             password:password
         })
     })
+    window.location.href = "../login/login.html"
 }
 })

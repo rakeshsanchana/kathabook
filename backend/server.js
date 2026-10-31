@@ -2,17 +2,33 @@ const express=require("express")
 const mongoose=require("mongoose")
 const cors=require("cors")
 const bcrypt=require("bcrypt")
+const dotenv=require("dotenv")
+const jwt=require("jsonwebtoken")
 
 const app=express()
 app.use(express.json())
 app.use(cors())
+dotenv.config()
 
-app.get("/kathabook",(req,res)=>{
-    res.send("created")
-})
+////middleware
+function verifytoken(req, res, next) {
+
+    const token = req.headers.authorization
+
+    jwt.verify(token, process.env.SECRETKEY, (err, decoded) => {
+
+        if (err) {
+            return res.send("Invalid token")
+        }
+
+        req.user = decoded
+        next()
+    })
+}
+
 
 ///mongo db connection
-mongoose.connect("mongodb://rakeshsanchana0411_db_user:d4oIOnopxO2fxjZS@ac-uod9lfp-shard-00-00.iwm2hrl.mongodb.net:27017,ac-uod9lfp-shard-00-01.iwm2hrl.mongodb.net:27017,ac-uod9lfp-shard-00-02.iwm2hrl.mongodb.net:27017/?ssl=true&replicaSet=atlas-5vkt8r-shard-0&authSource=admin",
+mongoose.connect(process.env.MONGODB_URL,
     {
         dbName:"kathabook"
     }
@@ -26,11 +42,15 @@ mongoose.connect("mongodb://rakeshsanchana0411_db_user:d4oIOnopxO2fxjZS@ac-uod9l
 
 
 ////server code
-app.get("/", (req, res) => {
-    res.send("KathaBook backend is running successfully!")
+app.get("/kathabook", verifytoken, async(req,res)=>{
+    const task = await model.find({
+        userId: req.user.id
+    })
+
+    res.send(task)
 })
 
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
     console.log("server is running")
@@ -39,6 +59,11 @@ app.listen(PORT, () => {
 ///database schema
 
 const schema=new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "signupmodel",
+        required: true
+    },
     username:{
         type:String,
         required:true
@@ -57,8 +82,15 @@ const schema=new mongoose.Schema({
 
 const model=mongoose.model("model",schema) 
 
-app.post("/kathabook",async(req,res)=>{
-    const task=await model.create(req.body)
+app.post("/kathabook",verifytoken,async(req,res)=>{
+
+    const task=await model.create({
+        userId:req.user.id,
+        username:req.body.username,
+        amount:req.body.amount,
+        type:req.body.type
+    })
+
     res.send(task)
 })
 
@@ -100,12 +132,31 @@ app.post("/login",async(req,res)=>{
     const {email,password}=req.body
     const newuser=await signupmodel.findOne({email})
     if(!newuser){
-        return res.send("no user found")
+        return res.send({message: "no user found"})
     }
 
-    const ismatch=await bcrypt.compare(newuser.password,password)
+    const ismatch=await bcrypt.compare(password,newuser.password)
     if(!ismatch){
-        return res.send("password incorrect")
+        return res.send({
+            message:"password incorrect"})
     }
-    res.send("login successful")
+    const token=jwt.sign(
+        {
+            id:newuser._id
+        },
+        process.env.SECRETKEY
+    )
+    res.send({
+        token}
+    )
+})
+
+app.delete("/kathabook/:id", verifytoken, async(req,res)=>{
+
+    await model.findOneAndDelete({
+        _id: req.params.id,
+        userId: req.user.id
+    })
+
+    res.send("deleted")
 })
