@@ -5,7 +5,7 @@ const add=document.querySelector(".recipient-list")
 ////to show the transactions for users
 async function gettransactions() {
 
-    const response = await fetch("https://kathabook-5.onrender.com/kathabook", {
+    const response = await fetch("https://kathabook-kvn3.onrender.com/kathabook", {
         method: "GET",
         headers: {
             "Authorization": localStorage.getItem("token")
