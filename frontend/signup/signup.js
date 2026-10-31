@@ -19,6 +19,11 @@ btn.addEventListener("click",async()=>{
             password:password
         })
     })
+    const data = await respose.json()
+console.log(data)
+
+if(respose.ok){
     window.location.href = "../login/login.html"
+}
 }
 })
