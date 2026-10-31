@@ -40,6 +40,9 @@ mongoose.connect(process.env.MONGODB_URL,
     console.log("there is a error")
 })
 
+app.get("/", (req, res) => {
+    res.send("KathaBook backend is running")
+})
 
 ////server code
 app.get("/kathabook", verifytoken, async(req,res)=>{
