@@ -19,7 +19,7 @@ btn.addEventListener("click",async()=>{
             password:password
         })
     })
-    const data = await respose.json()
+    const data = await respose.text()
 console.log(data)
 
 if(respose.ok){
